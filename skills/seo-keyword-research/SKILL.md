@@ -1,108 +1,108 @@
 ---
 name: seo-keyword-research
-description: For Appnable and its products (including KoKoodi). Research SEO keywords and propose blog/article topic ideas for a website or client, using free SEO tools (Google Keyword Planner, Google Trends, Search Console, Ahrefs free tools, Semrush free account, Ubersuggest, AnswerThePublic, AlsoAsked) plus live Google results, then deliver a keyword research Word document for the author to approve. Use this skill whenever the user asks for SEO topic ideas, keyword research, a focus keyphrase, "what should we write about", content ideas for a company blog, or says they need to research topics before writing SEO content, even if they don't say "keyword research" explicitly. Run this BEFORE the seo-article-writer skill; topics only go to writing once the author approves them.
+description: For Appnable and its products (including KoKoodi). Research high-ranking SEO keywords (long-tail and short-tail) and propose blog topics tied to Appnable's five service areas (Microsoft 365/Copilot, Automation, Custom software, ERP, Compliance-led technology), using free SEO tools (Google Keyword Planner, Google Trends, Search Console, Ahrefs free tools, Semrush free account, Ubersuggest, AnswerThePublic, AlsoAsked) plus live Google results. For each topic, picks one primary keyword and 2–4 supporting keywords, confirms search volume, checks the content tracker so no primary keyword is reused, and delivers a keyword research Word document for approval. Use this skill whenever the user asks for SEO topic ideas, keyword research, a primary or focus keyword, "what should we write about", blog ideas, or says they need to research topics before writing, even if they don't say "keyword research". Run this BEFORE the seo-article-writer skill; topics only go to writing once the author approves them.
 ---
 
-# SEO Keyword Research
+# Appnable SEO Keyword Research
 
-Find topics a business can realistically rank for, pick one focus keyphrase per topic, and hand the author a short Word document they can approve. Writing the articles is a separate step (the `seo-article-writer` skill) and only starts after the author approves the topics.
+Find topics Appnable can realistically rank for, choose one primary keyword and 2–4 supporting keywords per topic, and hand the author a short Word document to approve. Writing is a separate step (`seo-article-writer`) that starts only after approval.
+
+The **Appnable Blog Writing Guidelines** from Marketing set the rules. Read the keyword section in `../seo-article-writer/references/appnable-blog-guidelines.md` before starting. The author's instructions in the conversation override any default here.
 
 ## Company context: Appnable
 
-These skills are built for **Appnable** and its products. Unless the author names a different company, assume all research and writing is for Appnable.
+Read `../seo-article-writer/references/appnable-company.md` (who Appnable is, its five solutions, products and case studies) and every file in `../seo-article-writer/references/company-docs/` before researching. Topics must fit what Appnable actually delivers.
 
-- **Company:** Appnable, a UK-based Microsoft 365 consultancy (website: appnable.com).
-- **What it does:** Microsoft 365 consulting, AI-powered Office automation, branded digital solutions such as Office templates and document systems, and integrations with Power Platform and SharePoint.
-- **Flagship product:** KoKoodi (kokoodi.com), an AI Office automation platform for document intelligence, Office automation, workflows and compliance.
-- **Target readers:** legal, financial and professional services firms; partners, COOs, finance directors, practice managers, IT and operations leads.
-- **Market and spelling:** UK first, so use UK English (organise, licence, programme) unless the author says otherwise.
-- **Call to action:** end each article with 1–2 sentences inviting readers to contact Appnable or book a KoKoodi demo, matched to the topic.
-- **Topic fit:** prefer topics that lead naturally to Appnable's services or KoKoodi, such as Microsoft 365, Copilot, Power Automate, SharePoint, document automation, Office templates, and AI for legal and finance.
+- **Company:** Appnable Ltd, a UK enterprise consultancy since 2003, working "where documents, compliance and Microsoft 365 meet" (appnable.com).
+- **Solutions:** custom software · automation · Microsoft 365 and Copilot · ERP and business systems (Odoo) · consulting.
+- **Own products:** KoKoodi (AI Office automation platform) and StGatherly (membership, communications and giving platform). **Client-based app:** Pendroply. Label them correctly.
+- **Group:** Wingato (engineering, delivery, R&D).
+- **Readers:** decision-makers and technical buyers in **legal, financial services, pharmaceuticals and government**.
+- **Market:** United Kingdom. Research UK search data; use UK English.
 
-Check appnable.com and kokoodi.com for current services, product details and existing articles before each project, since they change over time. If the sites block automated access, ask the author for the details or article links rather than guessing.
+### The five keyword groups (start here)
 
-## Inputs to collect
+Every topic must tie to a service Appnable sells. These are Marketing's starting keywords:
 
-Use what the user already gave you; ask only for what's missing, in one question.
+| Service area | Primary keyword | Supporting keywords |
+| --- | --- | --- |
+| Microsoft 365 / Copilot | Microsoft Copilot consultant UK | Copilot readiness assessment, Copilot data security, Microsoft 365 consultancy |
+| Automation | business process automation UK | workflow automation for regulated industries, Power Automate consultant, AI automation platform |
+| Custom software | custom software development UK | bespoke business software, software development for financial services, legal tech development |
+| ERP | ERP implementation UK | ERP consultancy, Dynamics 365 implementation*, replacing spreadsheets with ERP |
+| Compliance-led technology | technology consultancy for regulated industries | GDPR compliant software, data governance consultancy, digital transformation for law firms |
 
-- **The website or company** (default: Appnable, appnable.com; KoKoodi topics go to kokoodi.com when the author says so).
-- **Number of topics** (default: 2).
-- **Target market / country** (default: United Kingdom; affects volumes and spelling).
-- **Any topics or keywords the author already has in mind.**
+\* **Appnable implements Odoo, not Dynamics 365** (appnable.com/solutions). Until Marketing confirms otherwise, don't propose Dynamics 365 keywords; use Odoo equivalents such as "Odoo implementation UK" and flag the swap in the research document.
 
-## Step 1: Understand the business
+Use these as seeds. Also consider keywords for KoKoodi and StGatherly (e.g. membership management software UK, charity donation platform, Gift Aid software) when the author asks for product topics. A blog's primary keyword can be one of them or a closely related long-tail variant found in research (e.g. "Copilot readiness assessment" as a primary keyword for a readiness blog).
 
-Search the web for the company and read its site (homepage, services, product pages, existing blog). Note:
+## Inputs
 
-- What it sells and to whom (industries, roles, company size).
-- Existing blog topics, so new topics don't duplicate them, and so they can later serve as internal links.
-- Brand or product names worth mentioning in a call to action.
+Use what the author already gave; ask only for what's missing, in one message:
 
-If the site blocks automated access, use search snippets, company profiles (LinkedIn, RocketReach, Crunchbase) and tell the author what you couldn't see.
+- Number of topics (default: 2) and, if they have a preference, which service area(s).
+- Any topic ideas they already have.
+- The content tracker, or the list of published blogs and their primary keywords (also in `../seo-article-writer/references/appnable-links.md`).
 
-## Step 2: Generate seed keywords
+## Step 1: Check what already exists
 
-From what the business sells, write 10–20 seed phrases the target buyer would type into Google. Favour problem-and-solution phrasing ("automate approvals", "document automation for law firms") over brand jargon.
+Read the Published blogs table in `appnable-links.md` (or the tracker the author shares) and note every primary keyword already used. **Never propose a primary keyword that another blog already targets**; they would compete in search. Note related blogs that could become "Read also" links.
 
-## Step 3: Pull data from SEO tools
+## Step 2: Pull keyword data
 
 Use the best data source available, in this order:
 
-1. **Connected SEO connectors.** Check the tool list for Ahrefs, Semrush, Google Search Console or similar connectors. If none are loaded, search the connector directory (`search_mcp_registry` with keywords like `["seo", "ahrefs", "semrush", "keywords"]`) and offer any that fit. A connector gives real volume and difficulty numbers, so it is worth one check.
-2. **The author's browser** (Claude in Chrome, if available). Free tools the author is signed into can be read directly.
-3. **Free public tools via web search/fetch**, and live Google results (see the table below).
-4. **No tool access at all**: do the qualitative research (SERPs, People also ask, competitor pages) and give the author the verification checklist from Step 6 to fill in the numbers themselves.
+1. **Connected SEO connectors** (Ahrefs, Semrush, Search Console). If none are loaded, search the connector directory (`search_mcp_registry` with `["seo", "ahrefs", "semrush", "keywords"]`) and offer any that fit.
+2. **The author's browser** (Claude in Chrome, if available) for free tools they're signed into.
+3. **Free public tools and live Google results** via web search and fetch.
+4. **No tool access:** do the qualitative research and leave volume as "verify in [tool]" with the checklist in Step 6.
 
 | Tool | Free tier | Use it for |
 | --- | --- | --- |
-| Google Keyword Planner | Free with a Google Ads account (no spend needed) | Monthly search ranges by country, related keywords |
-| Google Trends | Free | Rising vs falling interest, seasonality, regional demand |
-| Google Search Console | Free (site owner) | Queries the site already gets impressions for; quick wins |
-| Google search itself | Free | Autocomplete, "People also ask", "Related searches", who ranks now |
-| Ahrefs Free Keyword Generator / Webmaster Tools | Free, limited | Keyword ideas, rough difficulty, question keywords |
-| Semrush free account | ~10 requests/day | Volume, keyword difficulty (KD%), intent label |
-| Ubersuggest | ~3 searches/day free | Volume, SEO difficulty, content ideas |
-| AnswerThePublic / AlsoAsked | Limited free searches | Question-style keywords for H2s and FAQs |
-| Moz Keyword Explorer | Limited free queries | Difficulty and SERP analysis |
+| Google Keyword Planner | Free with a Google Ads account | UK monthly search ranges, related keywords |
+| Google Trends | Free | Rising or falling interest in the UK, seasonality |
+| Google Search Console | Free (site owner) | Queries appnable.com already appears for; quick wins |
+| Google search | Free | Autocomplete, "People also ask", "Related searches", who ranks now |
+| Ahrefs Free Keyword Generator / Webmaster Tools | Free, limited | Keyword ideas, rough difficulty, questions |
+| Semrush free account | ~10 requests/day | UK volume, keyword difficulty (KD%), intent |
+| Ubersuggest | ~3 searches/day | Volume, difficulty, content ideas |
+| AnswerThePublic / AlsoAsked | Limited free | Question keywords for H2s and FAQs |
 
-**Never invent numbers.** Only report search volume, difficulty or CPC that a tool actually returned, and name the tool and country. If you couldn't get a number, write "verify in [tool]" rather than estimating. Made-up metrics get repeated in client reports and destroy trust.
+**Never invent numbers.** Only report volume, difficulty or CPC a tool actually returned, naming the tool and "UK". Otherwise write "verify in [tool]". The guidelines require search volume to be confirmed, so flag every unconfirmed figure.
 
-## Step 4: Choose the topics
+## Step 3: Choose the keywords
 
-For each candidate keyphrase, look at page one of Google and judge:
+For each candidate, look at page one of Google UK and judge:
 
-- **Search intent**: informational (how/what), commercial (best, vs, tools for), transactional. Match the article type to what already ranks.
-- **Rankability**: if page one is all huge brands, prefer a longer, more specific phrase.
-- **Business fit**: the article should lead naturally to the company's service or product.
-- **Freshness**: avoid topics the site already covers well.
+- **High-ranking and relevant:** real UK search demand, tied to an Appnable service.
+- **Long-tail vs short-tail:** short-tail terms have more volume but are hard to rank for; long-tail terms (4+ words) are easier and closer to buying intent. Prefer long-tail unless the data shows a short-tail term is winnable.
+- **Intent:** informational, commercial or transactional. Match the blog type to what already ranks.
+- **Not already used** as a primary keyword (Step 1).
 
-Pick one **focus keyphrase** per topic (usually 2–5 words) and 4–6 **secondary keywords** plus a few related terms (LSI) to use naturally. Write a working title with the keyphrase built into it, a URL slug, and a meta description (under 155 characters, keyphrase included).
+Then pick **one primary keyword** and **2–4 supporting keywords** per topic, plus 1–2 "People also ask" questions for the FAQs (one should contain a supporting keyword).
 
-## Step 5: Plan keyphrase placement
+## Step 4: Draft the SEO basics per topic
 
-The writing skill uses the keyphrase **7 times** by default. Plan where:
+- **Working title:** under 60 characters, primary keyword near the start, clear benefit. Give the character count.
+- **URL slug:** `/blog/` + short, lowercase, hyphenated, keyword only, no dates or stop words.
+- **Meta description:** 140–160 characters, includes the primary keyword. Give the character count.
+- **Keyword placement plan:** primary keyword in the title, URL and first 100 words; exact phrase 4–5 times at most in the blog; supporting keywords used naturally in the body and one FAQ question.
+- **Suggested Solution page** to link to, and **suggested "Read also" blogs** (if any exist).
+- **Suggested call to action** (book a demo, download a lead magnet, or contact us; the site's main CTA is Book a call, https://www.appnable.com/contact/).
+- **Selling angle:** the Appnable service, product or case study (from `appnable-company.md`) the blog's mid-section will feature.
 
-1. Title (H1)
-2. Introduction, first paragraph
-3. An H2 (e.g., "What Is [keyphrase]?")
-4. A second H2 (e.g., "Benefits of [keyphrase] for …")
-5. Body text
-6. A third H2 or body text
-7. Conclusion
+## Step 5: Deliver the keyword research document
 
-The meta description also contains the keyphrase but doesn't count toward the 7.
+Read the `docx` skill, then create `Keyword_Research_Appnable.docx` with:
 
-## Step 6: Deliver the keyword research document
+1. **Heading:** "SEO Keyword Research: [N] Topics for Appnable", with the date.
+2. **Summary table** (one column per topic): Service area · Primary keyword · Supporting keywords · Long/short-tail · UK search volume (tool) · Difficulty (tool) · Search intent · Working title (characters) · URL slug · Meta description (characters).
+3. **One section per topic:** why this topic (business fit, in 1–2 sentences), the keyword data with sources, FAQ question ideas, placement plan, selling angle, suggested Solution page, Read also candidates and CTA.
+4. **Already-used primary keywords** checked (from the tracker), so reviewers can see no duplicates.
+5. **How to verify** (numbered): Keyword Planner for UK volume; Semrush/Ahrefs for difficulty and current rankers; Google "People also ask" for FAQs; Search Console after publishing.
 
-Create a Word document (read the `docx` skill first) named `Keyword_Research_[Company].docx` with:
+Keyword research only; no blog drafts in this document. Use UK English.
 
-1. **Heading**: "SEO Keyword Research: [N] Topics for [Company]" and one sentence on what the company sells and to whom.
-2. **Summary table**, one column per topic, rows: Focus keyphrase · Article title · URL slug · Search intent · Target reader · Volume / difficulty (with tool name, or "verify") · Keyphrase uses (7).
-3. **One section per topic**: focus keyphrase, why this topic (1–2 sentences on business fit), secondary keywords (bullets), related terms (bullets), meta description, keyphrase placement plan (numbered 1–7), and suggested internal links (existing posts on the company site, if found).
-4. **How to verify these keywords**: a numbered checklist (Keyword Planner for volume by country; Semrush/Ahrefs for difficulty and current rankers; Google "People also ask" for extra H2s/FAQs; Search Console after publishing to track impressions and position).
+## Step 6: Get approval
 
-Keep it to just the keyword research; no article drafts in this document.
-
-## Step 7: Get approval
-
-End by presenting the file and asking the author to approve, swap or tweak the topics. Once approved, use the `seo-article-writer` skill to write the articles.
+Present the file and ask the author to approve, swap or tweak the topics. Remind them to log each approved primary keyword in the content tracker. Once approved, use the `seo-article-writer` skill.
